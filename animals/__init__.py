@@ -21,5 +21,9 @@ def grab(animal_name, *args, **kwargs):
 
     except (AttributeError, AssertionError, ModuleNotFoundError):
         raise ImportError('{} is not part of our animal collection!'.format(animal_name))
+    else:
+        if not issubclass(animal_class, AnimalBaseClass):
+            raise ImportError("We currently don't have {}, but you are welcome to send in the request for it!".format(animal_class))
 
     return instance
+
